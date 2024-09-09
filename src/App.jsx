@@ -15,7 +15,7 @@ import Visualization from './pages/Visualization';
 
 const Layout = () => {
   return (
-    <div className="cursor-pointer bg-neutral-100">
+    <div className="cursor-pointer bg-zinc-100">
       <Navigation />
       <Outlet />
       <Footer />
@@ -35,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login/>
+      },
+      {
+        path: '/signup',
+        element: <Signup/>
       }
     ]
   }
