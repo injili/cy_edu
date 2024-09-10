@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 export default function Signup() {
     return (
         <div>
@@ -17,8 +18,8 @@ export default function Signup() {
                             <label htmlFor="password">Password</label>
                             <input name='password' type="text" className='rounded-sm p-2'/>
                         </div>
-                        <button className='w-full text-center p-2 mt-8 mb-8 border border-2 border-red-800 font-black rounded-sm'>SUBMIT</button>
-                        <p>have an account? <span className='text-red-800'>Log In</span></p>
+                        <Link to="/"><button className='w-full text-center p-2 mt-8 mb-8 border border-2 border-red-800 font-black rounded-sm'>SUBMIT</button></Link>
+                        <p>have an account? <Link to="/login"><span className='text-red-800'>Log In</span></Link></p>
                     </form>
                 </div>
             </div>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Login() {
     return (
         <div>
@@ -13,8 +15,8 @@ export default function Login() {
                             <label htmlFor="password">Password</label>
                             <input name='password' type="text" className='rounded-sm p-2'/>
                         </div>
-                        <button className='w-full text-center p-2 mt-8 mb-8 border border-2 border-red-800 font-black rounded-sm'>SUBMIT</button>
-                        <p>have no account? <span className='text-red-800'>Sign Up</span></p>
+                        <Link to="/"><button className='w-full text-center p-2 mt-8 mb-8 border border-2 border-red-800 font-black rounded-sm'>SUBMIT</button></Link>
+                        <p>have no account? <Link to="/signup"> <span className='text-red-800'>Sign Up</span></Link></p>
                     </form>
                 </div>
             </div>
