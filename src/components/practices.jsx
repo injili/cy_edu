@@ -1,9 +1,16 @@
 import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const API_KEY = import.meta.env.VITE_STRAPI_API_KEY
+const API_URL = import.meta.env.VITE_STRAPI_API_URL
 
 export default function Practices() {
 
-    let [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [articles, setArticles] = useState([]);
+    const [content, setContent] = useState();
+    const [title, setTitle] = useState();
 
     function open() {
         setIsOpen(true)
@@ -11,38 +18,66 @@ export default function Practices() {
 
     function close() {
         setIsOpen(false)
+        setContent(null)
+        setTitle(null)
     }
+
+    function operateModal(content,title) {
+        open();
+        setContent(content);
+        setTitle(title);
+    }
+
+    useEffect(() => {
+        axios.get(`${API_URL}/trainings`, {
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${API_KEY}`
+            }
+        })
+        .then(response => {
+            const train = response.data.data.map(e => ({
+                id: e.id,
+                title: e.attributes.Title,
+                category: e.attributes.Category,
+                content: e.attributes.Content,
+            }))
+            setArticles(train)
+        })
+        .catch(error => {
+            console.error("There was an error", error)
+        })
+    }, []);
 
     return (
         <div>
-            <div className="flex flex-col items-center">
-                <div 
-                    className="border border-2 border-red-800 w-96 text-center rounded-md p-8 my-2 hover:text-white hover:bg-red-800"
-                    onClick={open}
-                >
-                    Article 1</div>
-                <div className="border border-2 border-red-800 w-96 text-center rounded-md p-8 my-2 hover:text-white hover:bg-red-800">Article 2</div>
-                <div className="border border-2 border-red-800 w-96 text-center rounded-md p-8 my-2 hover:text-white hover:bg-red-800">Article 3</div>
-                <div className="border border-2 border-red-800 w-96 text-center rounded-md p-8 my-2 hover:text-white hover:bg-red-800">Article 4</div>
-                <div className="border border-2 border-red-800 w-96 text-center rounded-md p-8 my-2 hover:text-white hover:bg-red-800">Article 5</div>
-            </div>
+            {articles.length > 0 ? (
+                <div className='flex flex-col items-center'>
+                    {articles
+                    .filter(article => article.category === 'Best Practices')
+                    .map((article, index) => (
+                        <div key={index} className="border border-2 border-red-800 w-96 text-center rounded-md p-8 my-2 hover:text-white hover:bg-red-800" onClick={() => operateModal(article.content, article.title)}>
+                            {article.title}
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <p>There are no articles here </p>
+            )}
             <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={close}>
                 <div className="fixed inset-0 z-10 w-screen bg-neutral-500 bg-opacity-75 overflow-y-auto">
                     <div className="flex h-full items-center justify-center p-4">
                         <DialogPanel
                         transition
-                        className="font-alata w-full max-w-5xl rounded-lg bg-white p-12 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+                        className="font-alata w-full max-w-5xl h-5/6 rounded-lg bg-white p-12 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
                         >
                             <DialogTitle as="h3" className="text-3xl font-black text-black py-4">
-                                Article 1
+                                {title}
                             </DialogTitle>
-                            <p className="leading-loose mt-4 text-lg font-poiretOne font-bold text-black max-h-96 overflow-y-auto custom-scrollbar pr-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus metus et ante dictum tempus. Nulla pulvinar libero ut iaculis interdum. Vestibulum nec condimentum nisi. Mauris id sapien dui. Morbi nisi ante, convallis in lacus in, tempor cursus tellus. Aenean porttitor, lorem pretium tincidunt egestas, odio quam pulvinar arcu, pellentesque ultricies arcu nisl vel enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus metus et ante dictum tempus. Nulla pulvinar libero ut iaculis interdum. Vestibulum nec condimentum nisi. Mauris id sapien dui. Morbi nisi ante, convallis in lacus in, tempor cursus tellus. Aenean porttitor, lorem pretium tincidunt egestas, odio quam pulvinar arcu, pellentesque ultricies arcu nisl vel enim.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus metus et ante dictum tempus. Nulla pulvinar libero ut iaculis interdum. Vestibulum nec condimentum nisi. Mauris id sapien dui. Morbi nisi ante, convallis in lacus in, tempor cursus tellus. Aenean porttitor, lorem pretium tincidunt egestas, odio quam pulvinar arcu, pellentesque ultricies arcu nisl vel enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus metus et ante dictum tempus. Nulla pulvinar libero ut iaculis interdum. Vestibulum nec condimentum nisi. Mauris id sapien dui. Morbi nisi ante, convallis in lacus in, tempor cursus tellus. Aenean porttitor, lorem pretium tincidunt egestas, odio quam pulvinar arcu, pellentesque ultricies arcu nisl vel enim.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus metus et ante dictum tempus. Nulla pulvinar libero ut iaculis interdum. Vestibulum nec condimentum nisi. Mauris id sapien dui. Morbi nisi ante, convallis in lacus in, tempor cursus tellus. Aenean porttitor, lorem pretium tincidunt egestas, odio quam pulvinar arcu, pellentesque ultricies arcu nisl vel enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus metus et ante dictum tempus. Nulla pulvinar libero ut iaculis interdum. Vestibulum nec condimentum nisi. Mauris id sapien dui. Morbi nisi ante, convallis in lacus in, tempor cursus tellus. Aenean porttitor, lorem pretium tincidunt egestas, odio quam pulvinar arcu, pellentesque ultricies arcu nisl vel enim.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus metus et ante dictum tempus. Nulla pulvinar libero ut iaculis interdum. Vestibulum nec condimentum nisi. Mauris id sapien dui. Morbi nisi ante, convallis in lacus in, tempor cursus tellus. Aenean porttitor, lorem pretium tincidunt egestas, odio quam pulvinar arcu, pellentesque ultricies arcu nisl vel enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus metus et ante dictum tempus. Nulla pulvinar libero ut iaculis interdum. Vestibulum nec condimentum nisi. Mauris id sapien dui. Morbi nisi ante, convallis in lacus in, tempor cursus tellus. Aenean porttitor, lorem pretium tincidunt egestas, odio quam pulvinar arcu, pellentesque ultricies arcu nisl vel enim.
+                            <p className="leading-loose mt-4 text-lg font-poiretOne font-bold text-black h-5/6 overflow-y-auto custom-scrollbar pr-4">
+                            {content}
                             </p>
-                            <div className="mt-8">
+                            <div className="my-4">
                                 <Button
                                 className="inline-flex items-center gap-2 rounded-md bg-red-800 py-1.5 px-3 text-sm/6 font-semibold text-white focus:outline-none hover:bg-white hover:text-neutral-800 data-[focus]:outline-1 data-[focus]:outline-white data-[open]:bg-neutral-800"
                                 onClick={close}
