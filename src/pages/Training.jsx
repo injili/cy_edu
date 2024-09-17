@@ -15,11 +15,11 @@ export default function Training() {
 
     return (
         <div>
-            <div className="mb-4 border-b border-gray-200 font-alata">
+            <div className="mb-4 font-alata">
                 <ul className="flex flex-row items-center justify-center -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                     <li className="me-2" role="presentation">
                         <button
-                        className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'identification' ? 'border-red-800' : 'border-transparent'}`}
+                        className={`inline-block p-4 border-b-2 hover:bg-forthprimary rounded ${activeTab === 'identification' ? 'border-forthprimary' : 'border-transparent'}`}
                         onClick={() => handleTabClick('identification')}
                         type="button"
                         role="tab"
@@ -31,7 +31,7 @@ export default function Training() {
                     </li>
                     <li className="me-2" role="presentation">
                         <button
-                        className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'containment' ? 'border-red-800' : 'border-transparent'}`}
+                        className={`inline-block p-4 border-b-2 hover:bg-forthprimary rounded ${activeTab === 'containment' ? 'border-forthprimary' : 'border-transparent'}`}
                         onClick={() => handleTabClick('containment')}
                         type="button"
                         role="tab"
@@ -43,7 +43,7 @@ export default function Training() {
                     </li>
                     <li className="me-2" role="presentation">
                         <button
-                        className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'eradication' ? 'border-red-800' : 'border-transparent'}`}
+                        className={`inline-block p-4 border-b-2 hover:bg-forthprimary rounded ${activeTab === 'eradication' ? 'border-forthprimary' : 'border-transparent'}`}
                         onClick={() => handleTabClick('eradication')}
                         type="button"
                         role="tab"
@@ -55,7 +55,7 @@ export default function Training() {
                     </li>
                     <li role="presentation">
                         <button
-                        className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'recovery' ? 'border-red-800' : 'border-transparent'}`}
+                        className={`inline-block p-4 border-b-2 hover:bg-forthprimary rounded ${activeTab === 'recovery' ? 'border-forthprimary' : 'border-transparent'}`}
                         onClick={() => handleTabClick('recovery')}
                         type="button"
                         role="tab"
@@ -67,7 +67,7 @@ export default function Training() {
                     </li>
                     <li role="presentation">
                         <button
-                        className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'communication' ? 'border-red-800' : 'border-transparent'}`}
+                        className={`inline-block p-4 border-b-2 hover:bg-forthprimary rounded ${activeTab === 'communication' ? 'border-forthprimary' : 'border-transparent'}`}
                         onClick={() => handleTabClick('communication')}
                         type="button"
                         role="tab"
@@ -79,7 +79,7 @@ export default function Training() {
                     </li>
                     <li role="presentation">
                         <button
-                        className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'practices' ? 'border-red-800' : 'border-transparent'}`}
+                        className={`inline-block p-4 border-b-2 hover:bg-forthprimary rounded ${activeTab === 'practices' ? 'border-forthprimary' : 'border-transparent'}`}
                         onClick={() => handleTabClick('practices')}
                         type="button"
                         role="tab"

@@ -56,7 +56,7 @@ export default function Practices() {
                     {articles
                     .filter(article => article.category === 'Best Practices')
                     .map((article, index) => (
-                        <div key={index} className="border border-2 border-red-800 w-96 text-center rounded-md p-8 my-2 hover:text-white hover:bg-red-800" onClick={() => operateModal(article.content, article.title)}>
+                        <div key={index} className="border border-2 border-forthprimary w-96 text-center rounded-md p-8 my-2 hover:text-white hover:bg-forthprimary" onClick={() => operateModal(article.content, article.title)}>
                             {article.title}
                         </div>
                     ))}
@@ -79,7 +79,7 @@ export default function Practices() {
                             </p>
                             <div className="my-4">
                                 <Button
-                                className="inline-flex items-center gap-2 rounded-md bg-red-800 py-1.5 px-3 text-sm/6 font-semibold text-white focus:outline-none hover:bg-white hover:text-neutral-800 data-[focus]:outline-1 data-[focus]:outline-white data-[open]:bg-neutral-800"
+                                className="inline-flex items-center gap-2 rounded-md bg-forthprimary py-1.5 px-3 text-sm/6 font-semibold text-white focus:outline-none hover:bg-white hover:text-neutral-800 data-[focus]:outline-1 data-[focus]:outline-white data-[open]:bg-neutral-800"
                                 onClick={close}
                                 >
                                 Close
