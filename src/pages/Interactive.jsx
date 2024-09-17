@@ -11,11 +11,12 @@ export default function Interactive() {
 
     return (
         <div>
-            <div className="mb-4 border-b border-gray-200 font-alata">
+            <div className="mb-4 font-alata">
+            <h2 className='text-center font-alata font-black m-4 text-4xl'>INTERACTIVE VIDEOS AND CASE STUDIES</h2>
                 <ul className="flex flex-row items-center justify-center -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                     <li className="me-2" role="presentation">
                         <button
-                        className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'videos' ? 'border-red-800' : 'border-transparent'}`}
+                        className={`inline-block p-4 border-b-2 hover:bg-forthprimary rounded ${activeTab === 'videos' ? 'border-forthprimary' : 'border-transparent'}`}
                         onClick={() => handleTabClick('videos')}
                         type="button"
                         role="tab"
@@ -27,7 +28,7 @@ export default function Interactive() {
                     </li>
                     <li className="me-2" role="presentation">
                         <button
-                        className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'studies' ? 'border-red-800' : 'border-transparent'}`}
+                        className={`inline-block p-4 border-b-2 hover:bg-forthprimary rounded ${activeTab === 'studies' ? 'border-forthprimary' : 'border-transparent'}`}
                         onClick={() => handleTabClick('studies')}
                         type="button"
                         role="tab"

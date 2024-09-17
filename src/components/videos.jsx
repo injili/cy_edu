@@ -3,7 +3,7 @@
 export default function Videos() {
     return (
         <div>
-            <div className="aspect-w-16 aspect-h-9">
+            <div className="aspect-w-16 aspect-h-9 flex flex-wrap gap-4">
                 <iframe
                     width="560"
                     height="315"

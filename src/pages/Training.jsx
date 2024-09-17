@@ -16,6 +16,7 @@ export default function Training() {
     return (
         <div>
             <div className="mb-4 font-alata">
+            <h2 className='text-center font-alata font-black m-4 text-4xl'>TRAINING TOPICS</h2>
                 <ul className="flex flex-row items-center justify-center -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                     <li className="me-2" role="presentation">
                         <button
