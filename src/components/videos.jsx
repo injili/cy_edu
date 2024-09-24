@@ -5,7 +5,7 @@ const API_KEY = import.meta.env.VITE_STRAPI_API_KEY
 const API_URL = import.meta.env.VITE_STRAPI_API_URL
 
 export default function Videos() {
-    const {links, setLinks} = useState([]);
+    const [links, setLinks] = useState([]);
 
     useEffect(() => {
         axios.get(`${API_URL}/videos-case-studies`, {
@@ -17,9 +17,10 @@ export default function Videos() {
         .then(response => {
             const it = response.data.data.map(e => ({
                 id: e.id,
-                link: e.attributes.link,
+                link: e.attributes.Link,
             }))
             setLinks(it)
+            console.log(it)
         })
         .catch(error => {
             console.log("There was an error", error)
@@ -31,12 +32,12 @@ export default function Videos() {
             {links.length > 0 ? (
                  <div className="aspect-w-16 aspect-h-9 flex flex-wrap gap-4">
                     {links
-                    .map((link, index) => (
+                    .map((thelink, index) => (
                     <iframe
                         key={index}
                         width="560"
                         height="315"
-                        src={link}
+                        src={thelink.link}
                         title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerPolicy="strict-origin-when-cross-origin"
