@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Dash(){
     return (
         <div className='font-alata'>
-            <div className='flex flex-col min-h-screen items-center justify-center text-white'>
+            <div className='flex flex-col h-[900px] items-center justify-center text-white'>
             <h1 className='p-12 font-black text-5xl text-center text-zinc-800'>DASHBOARD</h1>
                 <div className='grid lg:grid-cols-3 gap-4 lg:gap-12 flex'>
                     <Link to="/training">
