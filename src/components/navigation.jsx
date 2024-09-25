@@ -65,7 +65,7 @@ export default function Navigation() {
                         <Link to="/training"><li className="hover:text-thirdprimary">TRAINING</li></Link>
                         <Link to="/interactive"><li className="hover:text-thirdprimary">VIDEOS AND CASE STUDIES</li></Link>
                         <Link to="/visualization"><li className="hover:text-thirdprimary">VISUALIZATION</li></Link>
-                        <li><button className="hover:bg-forthprimary p-2 rounded-lg" onClick={toggleDrawer(true)}><NotificationsIcon className="text-white"/></button></li>
+                        <li><button className="hover:bg-white p-2 rounded-lg" onClick={toggleDrawer(true)}><NotificationsIcon/></button></li>
                     </ul>
                 </div>
             </div>
