@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 
 export default function Dash(){
     return (
-        <div className='font-alata'>
-            <div className='flex flex-col h-[900px] items-center justify-center text-white'>
-            <h1 className='p-12 font-black text-5xl text-center text-zinc-800'>DASHBOARD</h1>
+        <div className='my-12 font-alata'>
+            <div className='flex flex-col items-center justify-center text-white'>
+            <h1 className='pb-12 font-black text-5xl text-center text-zinc-800'>DASHBOARD</h1>
                 <div className='grid lg:grid-cols-3 gap-4 lg:gap-12 flex'>
                     <Link to="/training">
-                    <div className='hover:shadow-teo shadow-neo hover:text-white text-zinc-800
-                                    col-span-1 aspect-square text-center bg-forthprimary p-12 w-96
+                    <div className='hover:shadow-teo shadow-neo text-zinc-800
+                                    col-span-1 aspect-square text-center hover:bg-forthprimary border border-forthprimary p-12 w-96
                                     flex flex-col gap-4 items-center justify-center rounded-lg'>
                         <h2 className='font-black text-3xl'>Training Topics</h2>
                         <p>
@@ -18,8 +18,8 @@ export default function Dash(){
                     </div>
                     </Link>
                     <Link to="/interactive">
-                    <div className='hover:shadow-teo shadow-neo hover:text-white text-zinc-800
-                                    col-span-1 aspect-square text-center bg-forthprimary p-12 w-96
+                    <div className='hover:shadow-teo shadow-neo text-zinc-800
+                                    col-span-1 aspect-square text-center hover:bg-forthprimary border border-forthprimary p-12 w-96
                                     flex flex-col gap-4 items-center justify-center rounded-lg'>
                         <h2 className='font-black text-3xl'>Interactive Videos and Case Studies</h2>
                         <p>
@@ -29,8 +29,8 @@ export default function Dash(){
                     </div>
                     </Link>
                     <Link to="/visualization">
-                    <div className='hover:shadow-teo shadow-neo hover:text-white text-zinc-800
-                                    col-span-1 aspect-square text-center bg-forthprimary p-12 w-96
+                    <div className='hover:shadow-teo shadow-neo text-zinc-800
+                                    col-span-1 aspect-square text-center hover:bg-forthprimary border border-forthprimary p-12 w-96
                                     flex flex-col gap-4 items-center justify-center rounded-lg'>
                         <h2 className="font-black text-3xl">Visualization of Incidents</h2>
                         <p>

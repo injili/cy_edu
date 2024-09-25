@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import CloseIcon from '@mui/icons-material/Close';
 import axios from 'axios';
 
 const API_KEY = import.meta.env.VITE_STRAPI_API_KEY
@@ -38,13 +39,16 @@ export default function Navigation() {
     const Notifications = (
         <Box sx={{width: 500}} role="presentation">
             {notification.length > 0 ? (
-                <div className="flex flex-col items-center justify-center m-4">
-                    <h1 className="font-alata text-xl font-semibold my-4">NOTIFICATIONS</h1>
-                    {notification.map((anotification, index) => (
-                        <div key={index} className="p-4 border border-secondprimary m-1 rounded-lg">
-                            {anotification.content}
-                        </div>
-                    ))}
+                <div>
+                    <button className="absolute top-2 right-2 m-2 p-2 rounded-lg text-forthprimary hover:bg-forthprimary hover:text-white" onClick={toggleDrawer(false)}><CloseIcon/></button>
+                    <div className="flex flex-col items-center justify-center h-screen mx-4">
+                        <h1 className="font-alata text-xl font-semibold my-4">NOTIFICATIONS</h1>
+                        {notification.map((anotification, index) => (
+                            <div key={index} className="p-4 border border-secondprimary m-1 rounded-lg">
+                                {anotification.content}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             ):(
                 <p>There are no notifications</p>
@@ -55,13 +59,13 @@ export default function Navigation() {
     return (
         <div>
             <div className="flex justify-center">
-                <div className="sticky top-0 w-[900px]">
+                <div className="w-[900px]">
                     <ul className="m-4 p-4 rounded-lg bg-secondprimary flex font-black gap-4 font-alata justify-center items-center text-firstprimary">
                         <Link to="/"><li className="hover:text-thirdprimary">DASHBOARD</li></Link>
                         <Link to="/training"><li className="hover:text-thirdprimary">TRAINING</li></Link>
                         <Link to="/interactive"><li className="hover:text-thirdprimary">VIDEOS AND CASE STUDIES</li></Link>
                         <Link to="/visualization"><li className="hover:text-thirdprimary">VISUALIZATION</li></Link>
-                        <li><button className="bg-forthprimary py-2 px-4 rounded-lg" onClick={toggleDrawer(true)}><NotificationsIcon className="text-white"/></button></li>
+                        <li><button className="hover:bg-forthprimary p-2 rounded-lg" onClick={toggleDrawer(true)}><NotificationsIcon className="text-white"/></button></li>
                     </ul>
                 </div>
             </div>
