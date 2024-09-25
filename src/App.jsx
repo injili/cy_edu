@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   Outlet
 } from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
 
 import Footer from "./components/footer";
 import Navigation from "./components/navigation";
@@ -13,11 +14,21 @@ import Signup from './pages/Signup';
 import Training from './pages/Training';
 import Visualization from './pages/Visualization';
 
+
+
+
 const Layout = () => {
+  
+  const { isAuthenticated } = useAuth0()
+  
   return (
     <div className="cursor-pointer bg-zinc-100">
       <Navigation />
-      <Outlet />
+      { isAuthenticated ? (
+        <Outlet/>
+      ) : (
+        <Login/>
+      )}
       <Footer />
     </div>
   );
@@ -29,7 +40,7 @@ const router = createBrowserRouter([
     element:<Layout/>,
     children:[
       {
-        path: '/',
+        index: true,
         element: <Dash/>
       },
       {
