@@ -7,8 +7,8 @@ import './index.css'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Auth0Provider
-  domain=''
-  clientId=''
+  domain='dev-zey0zt7u7rr7pspk.us.auth0.com'
+  clientId='fsxoTAcQYut5VMbcZyKoCRghH8dAVUXi'
   authorizationParams={{ redirect_uri: window.location.origin }}>
   <App />
 </Auth0Provider>

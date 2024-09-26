@@ -9,7 +9,7 @@ import Footer from "./components/footer";
 import Navigation from "./components/navigation";
 import Dash from './pages/Dash';
 import Interactive from './pages/Interactive';
-import Login from './pages/Login';
+import LoginButton from './pages/LoginButton';
 import Signup from './pages/Signup';
 import Training from './pages/Training';
 import Visualization from './pages/Visualization';
@@ -27,7 +27,7 @@ const Layout = () => {
       { isAuthenticated ? (
         <Outlet/>
       ) : (
-        <Login/>
+        <LoginButton/>
       )}
       <Footer />
     </div>
@@ -42,10 +42,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Dash/>
-      },
-      {
-        path: '/login',
-        element: <Login/>
       },
       {
         path: '/signup',

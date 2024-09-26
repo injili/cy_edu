@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -10,6 +11,7 @@ const API_KEY = import.meta.env.VITE_STRAPI_API_KEY
 const API_URL = import.meta.env.VITE_STRAPI_API_URL
 
 export default function Navigation() {
+    const { logout } = useAuth0();
     const [notification, setNotification] = useState([]);
     const [open, setOpen] = useState(false);
 
@@ -30,7 +32,7 @@ export default function Navigation() {
         .catch(error => {
             console.error("There was an error", error)
         })
-    },[])
+},[])
 
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
@@ -65,6 +67,11 @@ export default function Navigation() {
                         <Link to="/training"><li className="hover:text-thirdprimary">TRAINING</li></Link>
                         <Link to="/interactive"><li className="hover:text-thirdprimary">VIDEOS AND CASE STUDIES</li></Link>
                         <Link to="/visualization"><li className="hover:text-thirdprimary">VISUALIZATION</li></Link>
+                        <li>
+                            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                            Log Out
+                            </button>
+                        </li>
                         <li><button className="hover:bg-white p-2 rounded-lg" onClick={toggleDrawer(true)}><NotificationsIcon/></button></li>
                     </ul>
                 </div>
